@@ -95,7 +95,7 @@ class UpdateServer:
     def loadconf(self):
         import string
         # TODO add premium remote package pull
-        with open(rustconf, 'r') as cnf:
+        with open(self.rustconf, 'r') as cnf:
             self.conf = cnf.readlines()
             self.conf = ''.join(self.conf)
             self.conf = json.loads(self.conf)

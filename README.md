@@ -3,6 +3,7 @@ This is a simple python script for creating, running, and maintaining rust serve
 
 # Packages Needed to be Installed
 * git
+* python3
 
 # Libraries Needed To Be Installed
 * requests

@@ -102,7 +102,7 @@ class UpdateServer:
 
 
     def runrustupdate(self):
-        self.conf = self.loadconf()
+        self.loadconf()
         self.updateserver()
         print(self.conf)
         if self.conf['modded'] == "1":

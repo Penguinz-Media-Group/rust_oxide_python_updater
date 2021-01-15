@@ -104,7 +104,7 @@ class UpdateServer:
     def runrustupdate(self):
         self.conf = self.loadconf()
         self.updateserver()
-        if self.conf['modded'] == 1:
+        if self.conf['modded'] == "1":
             curversion = self.getoxideversion()
             instversion = self.getinstalledversion()
             if curversion > instversion:

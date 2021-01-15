@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from  subprocess import Popen
+import subprocess
 import json
 from sys import exit
 import logging
@@ -52,7 +52,7 @@ def runserver(pw):
             conf['worldsize'], conf['desc'] + pmgdesc, conf['image'], conf['url'] )
 
     try:
-        process = Popen(['RustDedicated', opts], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process = subprocess.Popen(['RustDedicated', opts], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, error = process.communicate()
         logger.error(StringIO(error))
         logger.info(StringIO(output))

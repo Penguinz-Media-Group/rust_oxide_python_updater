@@ -84,7 +84,7 @@ class UpdateServer:
         return True
 
     def updateserver(self):
-        from subprocess import Popen
+        import subprocess
         from io import StringIO
         try:
             if self.conf['logfile']:
@@ -94,8 +94,8 @@ class UpdateServer:
         except Exception as err:
             logger.warning('Unable to write to log file')
         try:
-            Popen(["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],
-                stdout=logger.info)
+            process = subprocess.Popen(["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             output, error = process.communicate()
             logger.error(StringIO(error))
             logger.info(StringIO(output))

@@ -4,8 +4,6 @@ import json
 from requests import get
 
 
-
-
 class UpdateServer:
 
     def __init__(self):
@@ -101,7 +99,7 @@ class UpdateServer:
             self.conf = json.loads(self.conf.decode())
         return conf
 
-    def runrustupdate(self ):
+    def runrustupdate(self):
         self.conf = self.loadconf(self.rustconf)
         self.updateserver()
         if self.conf['modded'] == 1:
@@ -115,5 +113,5 @@ class UpdateServer:
 
 
 if __name__ == "__main__":
-    x = UpdateServer
+    x = UpdateServer()
     x.runrustupdate()

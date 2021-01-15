@@ -90,9 +90,18 @@ class UpdateServer:
             logger.debug("Running steam update")
             process = subprocess.Popen(["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            output, error = process.communicate()
-            logger.error(StringIO(error))
-            logger.info(StringIO(output))
+            while True:
+                output = process.stdout.readline()
+                error = process.stderr.readline()
+                if output == '' and process.poll() is not None:
+                    break
+                if output:
+                    logger.info(StringIO(output))
+                if error == '' and process.poll() is not None:
+                    break
+                if error:
+                    logger.error(StringIO(error))
+            rc = process.poll()
         except Exception as err:
             logger.error("Error while updating steam: %s" % err)
 

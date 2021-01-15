@@ -101,7 +101,7 @@ class UpdateServer:
             conf = json.loads(conf.decode())
         return conf
 
-    def runrustupdate(self):
+    def runrustupdate(self ):
         self.conf = self.loadconf(self.rustconf)
         self.updateserver()
         if self.conf['modded'] == 1:
@@ -112,6 +112,6 @@ class UpdateServer:
                 self.unzipfile(self.oxidezip, self.oxidedir)
             else:
                 print("Latest Version")
-
-x = UpdateServer
-x.runrustupdate()
+if __name__ == "__main__":
+    x = UpdateServer
+    x.runrustupdate()

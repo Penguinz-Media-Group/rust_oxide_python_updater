@@ -99,7 +99,7 @@ class UpdateServer:
             self.conf = cnf.readlines()
             self.conf = ''.join(self.conf)
             self.conf = json.loads(self.conf)
-        return conf
+
 
     def runrustupdate(self):
         self.conf = self.loadconf()

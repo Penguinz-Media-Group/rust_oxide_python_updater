@@ -19,10 +19,8 @@ def getpw():
     return pw
 
 def runserver(pw):
-    # TODO add premium remote package pull
-    with open(rustconf, 'r') as cnf:
-        conf = cnf.readlines()
-        conf = json.loads(conf.decode())
+    from updaterust import UpdateServer
+    conf = UpdateServer.loadconf()
     # TODO add premium conf loading for id, map, save interval, global chat, and removal of PMG desc add
     opts = '-batchmode -nographics  -rcon.ip %s -rcon.port %s -rcon.password %s -server.ip %s ' \
            '-server.port %s -server.maxplayers %s -server.hostname %s -server.identity "ServerByPMG" -server.seed %s' \
@@ -31,7 +29,14 @@ def runserver(pw):
            (conf['ip'], conf['rport'], pw, conf['ip'],  conf['sport'], conf['players'], conf['hostname'], conf['seed'],
             conf['worldsize'], conf['desc'] + pmgdesc, conf['image'], conf['url'] )
     try:
-        run(['RustDedicated', opts])
+        if conf['logfile']:
+            log = open(conf['logfile'], 'w')
+        else:
+            log = open("rust.log", 'w')
+    except Exception as err:
+        print('Unable to write to log file')
+    try:
+        run(['RustDedicated', opts], stdout=log)
     except Exception as err:
         print("Unable to start Rust Server!")
         return

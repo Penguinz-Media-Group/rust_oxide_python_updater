@@ -89,7 +89,7 @@ class UpdateServer:
         except Exception as err:
             print('Unable to write to log file')
         try:
-            run(["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate +quit"],
+            run(["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],
                 stdout=log)
         except Exception as err:
             print("Error while updating steam: %s" % err)

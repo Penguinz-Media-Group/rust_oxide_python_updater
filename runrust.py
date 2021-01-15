@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from  subprocess import run
+from  subprocess import Popen
 import json
 from sys import exit
 
@@ -44,7 +44,7 @@ def runserver(pw):
     except Exception as err:
         print('Unable to write to log file')
     try:
-        run(['RustDedicated', opts], stdout=log)
+        Popen(['RustDedicated', opts], stdout=log)
     except Exception as err:
         print("Unable to start Rust Server!")
         return

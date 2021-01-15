@@ -19,11 +19,11 @@ def getpw():
     return pw
 
 def loadconf():
-    import string
+
     # TODO add premium remote package pull
     with open(rustconf, 'r') as cnf:
         conf = cnf.readlines()
-        conf = string.join(conf)
+        conf = ''.join(conf)
         conf = json.loads(conf)
     return conf
 

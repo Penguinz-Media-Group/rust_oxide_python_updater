@@ -94,11 +94,11 @@ class UpdateServer:
         except Exception as err:
             print("Error while updating steam: %s" % err)
 
-    def loadconf(self, rustconf=self.rustconf):
+    def loadconf(self):
         # TODO add premium remote package pull
         with open(rustconf, 'r') as cnf:
-            conf = cnf.readlines()
-            conf = json.loads(conf.decode())
+            self.conf = cnf.readlines()
+            self.conf = json.loads(self.conf.decode())
         return conf
 
     def runrustupdate(self ):

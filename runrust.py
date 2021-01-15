@@ -18,10 +18,15 @@ def getpw():
         exit(1)
     return pw
 
+def loadconf():
+        # TODO add premium remote package pull
+        with open(rustconf, 'r') as cnf:
+            conf = cnf.readlines()
+            conf = json.loads(conf.decode())
+        return conf
+
 def runserver(pw):
-    from updaterust import UpdateServer
-    x = UpdateServer
-    conf = x.loadconf()
+    conf = loadconf()
     # TODO add premium conf loading for id, map, save interval, global chat, and removal of PMG desc add
     opts = '-batchmode -nographics  -rcon.ip %s -rcon.port %s -rcon.password %s -server.ip %s ' \
            '-server.port %s -server.maxplayers %s -server.hostname %s -server.identity "ServerByPMG" -server.seed %s' \

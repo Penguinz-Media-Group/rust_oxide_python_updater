@@ -1,5 +1,8 @@
 # rust_oxide_python_updater
-This is a simple python script for updating Oxide on a system when ran.
+This is a simple python script for creating, running, and maintaining rust servers using python and a minimal amount of packages outside of core packages for our base package.
+
+# Packages Needed to be Installed
+* git
 
 # Libraries Needed To Be Installed
 * requests
@@ -13,3 +16,5 @@ This script is licensed as the license file shows in the repo. Chat with me and 
 # Ownership
 This script is brought to you by Penguinz Media Group, LLC
 
+# FOSS vs Premium
+We will maintain at leat 50 percent of our functions as FOSS, but will also maintain a premium compiled version which will help cover maintenance fees.

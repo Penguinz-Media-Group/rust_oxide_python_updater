@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from  subprocess import run
 import json
-from os import exit
+from sys import exit
 
 rustpw = "rustpw.json"
 rustconf = "rust.conf"

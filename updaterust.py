@@ -2,7 +2,11 @@
 
 import json
 from requests import get
+import logging
 
+FORMAT = '%(asctime)-15s %(function)-8s %(message)s'
+logging.basicConfig(format=FORMAT, filename="rust.log")
+logger = logging.getLogger('rustserver')
 
 class UpdateServer:
 
@@ -18,11 +22,12 @@ class UpdateServer:
         try:
             page = get(versionurl)
         except Exception as err:
-            print("Error retrieving version file: %s" % err)
+            logger.error("Error retrieving version file: %s" % err)
         content = page.content
         data = json.loads(content.decode())
 
         version = (data["version"])
+        logger.debug("Latest Oxide Version: %s" % version)
         return version
 
 
@@ -34,8 +39,9 @@ class UpdateServer:
                 y = json.loads(x)['version']
                 vfile.close()
         except Exception as err:
-            print(err)
+            logger.error(err)
             y = "0"
+        logger.debug('Current Install Oxide Version')
         return y
 
 
@@ -45,6 +51,7 @@ class UpdateServer:
         jsonout['version'] = version
         print("Updating")
         url = downloadurl[0] + version + downloadurl[1]
+        logger.debug("Download URL: %s" % url)
         try:
             file = get(url, allow_redirects=True)
         except Exception as err:
@@ -57,7 +64,7 @@ class UpdateServer:
                 json.dump(jsonout, vfile)
                 vfile.close()
         except Exception as err:
-            print("Error writing to file: %s" % err)
+            logger.error("Error writing to file: %s" % err)
 
     def unzipfile(self, zipfile, zipdir,mode='r'):
         from os import remove
@@ -66,13 +73,13 @@ class UpdateServer:
             with ZipFile(zipfile, 'r') as zp:
                 zp.extractall(zipdir)
         except Exception as err:
-            print("Failed to unzip oxide package: %s" % err)
+            logger.error("Failed to unzip oxide package: %s" % err)
             return False
         if mode == "r":
             try:
                 remove(zipfile)
             except Exception as err:
-                print("Failed to cleanup oxide package: %s" % err)
+                logger.warning("Failed to cleanup oxide package: %s" % err)
                 return False
         return True
 
@@ -85,26 +92,28 @@ class UpdateServer:
             else:
                 log = open("rust.log", 'w')
         except Exception as err:
-            print('Unable to write to log file')
+            logger.warning('Unable to write to log file')
         try:
             run(["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],
-                stdout=log)
+                stdout=logger.info)
         except Exception as err:
-            print("Error while updating steam: %s" % err)
+            logger.error("Error while updating steam: %s" % err)
 
     def loadconf(self):
         import string
         # TODO add premium remote package pull
-        with open(self.rustconf, 'r') as cnf:
-            self.conf = cnf.readlines()
-            self.conf = ''.join(self.conf)
-            self.conf = json.loads(self.conf)
-
+        try:
+            with open(self.rustconf, 'r') as cnf:
+                self.conf = cnf.readlines()
+                self.conf = ''.join(self.conf)
+                self.conf = json.loads(self.conf)
+        except Exception as err:
+            logger.error("Unabel to load config file!")
 
     def runrustupdate(self):
         self.loadconf()
         self.updateserver()
-        print(self.conf)
+        logger.debug(self.conf)
         if self.conf['modded'] == "1":
             curversion = self.getoxideversion()
             instversion = self.getinstalledversion()
@@ -112,8 +121,8 @@ class UpdateServer:
                 self.updateoxide(curversion, self.oxidezip)
                 self.unzipfile(self.oxidezip, self.oxidedir)
             else:
-                print("Latest Version")
-        print("Rust is up to date!")
+                logger.info("Latest Version")
+        logger.info("Rust is up to date!")
 
 if __name__ == "__main__":
     x = UpdateServer()

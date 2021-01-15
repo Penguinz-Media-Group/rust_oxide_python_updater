@@ -1,0 +1,14 @@
+[Install]
+WantedBy=multi-user.target
+
+[Unit]
+After=syslog.target network-online.target
+User=steam
+Group=steam
+
+[Service]
+ExecStart=/opt/rust/rustserver.sh
+Type=simple
+RemainAfterExit=no
+Restart=always
+RestartSec=45s

@@ -11,7 +11,10 @@ do
   git fetch origin Development
   git reset --hard FETCH_HEAD
   chmod +x *.py *.sh
+  echo "Updating Rust and Oxide"
   python3 updaterust.py
+  echo "Starting Server"
   python3 runrust.py
   sleep 10
+  echo "restarting"
 done

@@ -57,7 +57,7 @@ def runserver(pw):
         logger.error(StringIO(error))
         logger.info(StringIO(output))
     except Exception as err:
-        logger.error("Unable to start Rust Server!")
+        logger.error("Unable to start Rust Server: %s" % err)
         return
     logger.info("Starting Rust Server with PMG assistance!")
 

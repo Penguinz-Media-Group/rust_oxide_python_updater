@@ -4,7 +4,7 @@ import json
 from sys import exit
 
 rustpw = "rustpw.json"
-rustconf = "rust.conf"
+rustconf = "rustconf.json"
 
 # TODO add premium support for getopts
 def getpw():

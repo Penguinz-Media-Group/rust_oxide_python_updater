@@ -87,13 +87,6 @@ class UpdateServer:
         import subprocess
         from io import StringIO
         try:
-            if self.conf['logfile']:
-                log = open(self.conf['logfile'], 'w')
-            else:
-                log = open("rust.log", 'w')
-        except Exception as err:
-            logger.warning('Unable to write to log file')
-        try:
             process = subprocess.Popen(["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             output, error = process.communicate()

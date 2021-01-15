@@ -113,7 +113,7 @@ class UpdateServer:
                 self.unzipfile(self.oxidezip, self.oxidedir)
             else:
                 print("Latest Version")
-
+        print("Rust is up to date!")
 
 if __name__ == "__main__":
     x = UpdateServer()

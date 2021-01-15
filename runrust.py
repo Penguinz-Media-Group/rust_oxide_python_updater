@@ -12,6 +12,8 @@ FORMAT = '%(asctime)-15s  %(function)-8s %(message)s'
 logging.basicConfig(format=FORMAT, filename="rust.log")
 logger = logging.getLogger('rustserver')
 
+
+
 # TODO add premium support for getopts
 def getpw():
     try:
@@ -36,6 +38,8 @@ def loadconf():
     return conf
 
 def runserver(pw):
+    from io import StringIO
+
     conf = loadconf()
     pmgdesc = "\n A PMG assisted server. https://penguinzmedia.group/rust"
     logger.info('Starting Rust Server')
@@ -48,7 +52,10 @@ def runserver(pw):
             conf['worldsize'], conf['desc'] + pmgdesc, conf['image'], conf['url'] )
 
     try:
-        Popen(['RustDedicated', opts], stdout=logger.info)
+        process = Popen(['RustDedicated', opts], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        output, error = process.communicate()
+        logger.error(StringIO(error))
+        logger.info(StringIO(output))
     except Exception as err:
         logger.error("Unable to start Rust Server!")
         return

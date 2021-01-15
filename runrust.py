@@ -22,7 +22,7 @@ def loadconf():
         # TODO add premium remote package pull
         with open(rustconf, 'r') as cnf:
             conf = cnf.readlines()
-            conf = json.loads(conf.decode())
+            conf = json.loads(conf)
         return conf
 
 def runserver(pw):

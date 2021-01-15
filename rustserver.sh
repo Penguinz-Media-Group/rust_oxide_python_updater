@@ -9,6 +9,7 @@ while :
 do
   cd /opt/rust
   git pull
+  chmod +x *.py *.sh
   python3 updaterust.py
   python3 updateoxide.py
   python3 runrust.py

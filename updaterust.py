@@ -5,7 +5,7 @@ from requests import get
 import logging
 
 FORMAT = '%(asctime)-15s %(function)-8s %(message)s'
-logging.basicConfig(format=FORMAT, filename="rust.log")
+logging.basicConfig(filename="rust.log", level=logging.DEBUG)
 logger = logging.getLogger('rustserver')
 
 class UpdateServer:

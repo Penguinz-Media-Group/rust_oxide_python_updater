@@ -10,7 +10,7 @@ rustconf = "rustconf.json"
 
 FORMAT = '%(asctime)-15s  %(function)-8s %(message)s'
 logging.basicConfig(filename="rust.log", level=logging.DEBUG)
-logger = logging.getLogger('rustserver')
+logger = logging.getLogger('rustserverexec')
 
 
 

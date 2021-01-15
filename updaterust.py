@@ -4,9 +4,9 @@ import json
 from requests import get
 import logging
 
-FORMAT = '%(asctime)-15s %(function)-8s %(message)s'
+
 logging.basicConfig(filename="rust.log", level=logging.DEBUG)
-logger = logging.getLogger('rustserver')
+logger = logging.getLogger('rustserverupdate')
 
 class UpdateServer:
 
@@ -87,6 +87,7 @@ class UpdateServer:
         import subprocess
         from io import StringIO
         try:
+            logger.debug("Running steam update")
             process = subprocess.Popen(["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             output, error = process.communicate()
@@ -96,15 +97,15 @@ class UpdateServer:
             logger.error("Error while updating steam: %s" % err)
 
     def loadconf(self):
-        import string
         # TODO add premium remote package pull
         try:
             with open(self.rustconf, 'r') as cnf:
                 self.conf = cnf.readlines()
                 self.conf = ''.join(self.conf)
                 self.conf = json.loads(self.conf)
+                logger.debug("Read in configuration for rust / oxide update.")
         except Exception as err:
-            logger.error("Unabel to load config file!")
+            logger.error("Unable to load config file!")
 
     def runrustupdate(self):
         self.loadconf()

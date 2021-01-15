@@ -8,7 +8,9 @@ fi
 while :
 do
   cd /opt/rust
-  git pull
+  git fetch origin Development
+  git reset --hard FETCH_HEAD
+  git clean -df
   chmod +x *.py *.sh
   python3 updaterust.py
   python3 runrust.py

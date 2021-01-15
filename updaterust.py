@@ -93,9 +93,11 @@ class UpdateServer:
             print("Error while updating steam: %s" % err)
 
     def loadconf(self):
+        import string
         # TODO add premium remote package pull
         with open(rustconf, 'r') as cnf:
             self.conf = cnf.readlines()
+            self.conf = string.join(self.conf)
             self.conf = json.loads(self.conf)
         return conf
 

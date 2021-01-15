@@ -96,11 +96,11 @@ class UpdateServer:
         # TODO add premium remote package pull
         with open(rustconf, 'r') as cnf:
             self.conf = cnf.readlines()
-            self.conf = json.loads(self.conf.decode())
+            self.conf = json.loads(self.conf)
         return conf
 
     def runrustupdate(self):
-        self.conf = self.loadconf(self.rustconf)
+        self.conf = self.loadconf()
         self.updateserver()
         if self.conf['modded'] == 1:
             curversion = self.getoxideversion()

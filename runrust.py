@@ -29,6 +29,7 @@ def loadconf():
 def runserver(pw):
     conf = loadconf()
     pmgdesc = "\n A PMG assisted server. https://penguinzmedia.group/rust"
+    print('Starting Rust Server')
     # TODO add premium conf loading for id, map, save interval, global chat, and removal of PMG desc add
     opts = '-batchmode -nographics  -rcon.ip %s -rcon.port %s -rcon.password %s -server.ip %s ' \
            '-server.port %s -server.maxplayers %s -server.hostname %s -server.identity "ServerByPMG" -server.seed %s' \

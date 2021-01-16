@@ -88,7 +88,7 @@ class UpdateServer:
 
     def updateserver(self):
         import subprocess
-        // from io import StringIO
+        # from io import StringIO
         try:
             logger.debug("Running steam update")
             subprocess.Popen(["/usr/games/steamcmd", " +login anonymous +force_install_dir . "

@@ -39,7 +39,7 @@ def loadconf():
     return conf
 
 def runserver(pw):
-    from io import StringIO
+    # from io import StringIO
 
     conf = loadconf()
     pmgdesc = "\n A PMG assisted server. https://penguinzmedia.group/rust"

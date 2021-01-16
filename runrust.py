@@ -46,10 +46,10 @@ def runserver(pw):
     logger.info('Starting Rust Server')
     logger.debug(conf)
     # TODO add premium conf loading for id, map, save interval, global chat, and removal of PMG desc add
-    opts = '-batchmode -nographics  -rcon.ip %s -rcon.port %s -rcon.password "%s" -server.ip %s ' \
-           '-server.port %s -server.maxplayers %s -server.hostname "%s" -server.identity "ServerByPMG" -server.seed %s' \
-           '-server.level "Procedural Map" -server.worldsize %s -server.saveinterval 3600 -server.globalchat true ' \
-           '-server.description "%s" -server.headerimage "%s" -server.url "%s"'  % \
+    opts = '-batchmode -nographics  -rcon.ip "%s" -rcon.port "%s" -rcon.password "%s" -server.ip "%s" ' \
+           '-server.port "%s" -server.maxplayers "%s" -server.hostname "%s" -server.identity "ServerByPMG" -server.seed "%s" ' \
+           '-server.level "Procedural Map" -server.worldsize "%s" -server.saveinterval "3600" -server.globalchat "true" ' \
+           '-server.description "%s" -server.headerimage "%s" -server.url "%s"' % \
            (conf['ip'], conf['rport'], pw, conf['ip'],  conf['sport'], conf['players'], conf['hostname'], conf['seed'],
             conf['worldsize'], conf['desc'] + pmgdesc, conf['image'], conf['url'] )
 

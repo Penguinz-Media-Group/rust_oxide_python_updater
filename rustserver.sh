@@ -4,7 +4,7 @@ if ! -d "/opt/rust" ; then
   git clone https://github.com/Penguinz-Media-Group/rust_oxide_python_updater.git /opt/rust
 fi
 if ! -f "/etc/systemd/rust.service"; then
-  cp rust.service /etc/systemd/rust.service
+  cp /opt/rust/rust.service /etc/systemd/rust.service
   systemctl enable rust.service
 fi
 # TODO add Ansible alternative for Premium

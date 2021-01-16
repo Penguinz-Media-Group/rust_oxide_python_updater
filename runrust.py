@@ -5,7 +5,7 @@ import sys
 import logging
 
 rustpw = "rustpw.json"
-rustconf = "rustconf.json"
+rustconf = "rustconf.json.example"
 
 
 FORMAT = '%(asctime)-15s  %(function)-8s %(message)s'

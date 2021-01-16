@@ -17,7 +17,7 @@ class UpdateServer:
         self.versionfile = "version.json"
         self.oxidezip = "oxide.zip"
         self.oxidedir = "."
-        self.rustconf = "rustconf.json"
+        self.rustconf = "rustconf.json.example"
         self.conf = {}
 
     def getoxideversion(self):

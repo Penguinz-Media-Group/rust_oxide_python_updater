@@ -8,10 +8,13 @@ fi
 while :
 do
   cd /opt/rust
-  git pull
+  git fetch origin Development
+  git reset --hard FETCH_HEAD
   chmod +x *.py *.sh
+  echo "Updating Rust and Oxide"
   python3 updaterust.py
-  python3 updateoxide.py
+  echo "Starting Server"
   python3 runrust.py
   sleep 10
+  echo "restarting"
 done

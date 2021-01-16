@@ -2,9 +2,14 @@
 
 import json
 from requests import get
+import logging
+import sys
 
+logging.basicConfig(filename="rust.log", level=logging.DEBUG)
+logger = logging.getLogger('rustserverupdate')
 
-
+sys.stdout.write = logger.info
+sys.stderr.write = logger.error
 
 class UpdateServer:
 
@@ -20,11 +25,12 @@ class UpdateServer:
         try:
             page = get(versionurl)
         except Exception as err:
-            print("Error retrieving version file: %s" % err)
+            logger.error("Error retrieving version file: %s" % err)
         content = page.content
         data = json.loads(content.decode())
 
         version = (data["version"])
+        logger.debug("Latest Oxide Version: %s" % version)
         return version
 
 
@@ -36,8 +42,9 @@ class UpdateServer:
                 y = json.loads(x)['version']
                 vfile.close()
         except Exception as err:
-            print(err)
+            logger.error(err)
             y = "0"
+        logger.debug('Current Install Oxide Version')
         return y
 
 
@@ -47,6 +54,7 @@ class UpdateServer:
         jsonout['version'] = version
         print("Updating")
         url = downloadurl[0] + version + downloadurl[1]
+        logger.debug("Download URL: %s" % url)
         try:
             file = get(url, allow_redirects=True)
         except Exception as err:
@@ -59,7 +67,7 @@ class UpdateServer:
                 json.dump(jsonout, vfile)
                 vfile.close()
         except Exception as err:
-            print("Error writing to file: %s" % err)
+            logger.error("Error writing to file: %s" % err)
 
     def unzipfile(self, zipfile, zipdir,mode='r'):
         from os import remove
@@ -68,47 +76,67 @@ class UpdateServer:
             with ZipFile(zipfile, 'r') as zp:
                 zp.extractall(zipdir)
         except Exception as err:
-            print("Failed to unzip oxide package: %s" % err)
+            logger.error("Failed to unzip oxide package: %s" % err)
             return False
         if mode == "r":
             try:
                 remove(zipfile)
             except Exception as err:
-                print("Failed to cleanup oxide package: %s" % err)
+                logger.warning("Failed to cleanup oxide package: %s" % err)
                 return False
         return True
 
     def updateserver(self):
-        from subprocess import run
-
+        import subprocess
+        # from io import StringIO
         try:
-            if self.conf['logfile']:
-                log = open(self.conf['logfile'], 'w')
-            else:
-                log = open("rust.log", 'w')
+            logger.debug("Running steam update")
+            subprocess.run(["/usr/games/steamcmd", " +login anonymous +force_install_dir /opt/rust "
+                                                               "+app_update 258550 +quit"])
+            '''  Will come back to this at some point. Would like to be able to log this out rather than stdout.
+            process = subprocess.Popen(
+            #    ["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],
+            #    stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            while True:
+                output = process.stdout.readline()
+                error = process.stderr.readline()
+                if output == '' and process.poll() is not None:
+                    break
+                if output:
+                    logger.info(StringIO(output))
+                if error == '' and process.poll() is not None:
+                    break
+                if error:
+                    logger.error(StringIO(error))
+            rc = process.poll() **/ '''
         except Exception as err:
-            print('Unable to write to log file')
-        try:
-            run(["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate +quit"],
-                stdout=log)
-        except Exception as err:
-            print("Error while updating steam: %s" % err)
+            logger.error("Error while updating steam: %s" % err)
 
-    def loadconf(self, rustconf):
+    def loadconf(self):
         # TODO add premium remote package pull
-        with open(rustconf, 'r') as cnf:
-            conf = cnf.readlines()
-            conf = json.loads(conf.decode())
-        return conf
+        try:
+            with open(self.rustconf, 'r') as cnf:
+                self.conf = cnf.readlines()
+                self.conf = ''.join(self.conf)
+                self.conf = json.loads(self.conf)
+                logger.debug("Read in configuration for rust / oxide update.")
+        except Exception as err:
+            logger.error("Unable to load config file!")
 
-    def runrust(self):
-        self.conf = self.loadconf(self.rustconf)
+    def runrustupdate(self):
+        self.loadconf()
         self.updateserver()
-        if self.conf['modded'] = 1:
+        logger.debug(self.conf)
+        if self.conf['modded'] == "1":
             curversion = self.getoxideversion()
             instversion = self.getinstalledversion()
             if curversion > instversion:
                 self.updateoxide(curversion, self.oxidezip)
                 self.unzipfile(self.oxidezip, self.oxidedir)
             else:
-                print("Latest Version")
+                logger.info("Latest Version")
+        logger.info("Rust is up to date!")
+
+if __name__ == "__main__":
+    x = UpdateServer()
+    x.runrustupdate()

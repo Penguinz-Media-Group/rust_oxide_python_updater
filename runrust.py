@@ -53,7 +53,7 @@ def runserver(pw):
             conf['worldsize'], conf['desc'] + pmgdesc, conf['image'], conf['url'] )
 
     try:
-        subprocess.Popen(['RustDedicated', opts])
+        subprocess.run(['/opt/rust/RustDedicated', opts])
         '''process = subprocess.Popen(['RustDedicated', opts], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         while True:
                 output = process.stdout.readline()

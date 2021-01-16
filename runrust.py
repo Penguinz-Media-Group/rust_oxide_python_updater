@@ -52,6 +52,7 @@ def runserver(pw):
            '-server.description "%s" -server.headerimage "%s" -server.url "%s"' % \
            (conf['ip'], conf['rport'], pw, conf['ip'],  conf['sport'], conf['players'], conf['hostname'], conf['seed'],
             conf['worldsize'], conf['desc'] + pmgdesc, conf['image'], conf['url'] )
+    logger.debug("%s" %  opts)
 
     try:
         subprocess.run(['/opt/rust/RustDedicated', opts])

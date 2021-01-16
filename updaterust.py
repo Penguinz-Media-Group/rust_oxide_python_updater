@@ -3,10 +3,13 @@
 import json
 from requests import get
 import logging
-
+import sys
 
 logging.basicConfig(filename="rust.log", level=logging.DEBUG)
 logger = logging.getLogger('rustserverupdate')
+
+sys.stdout.write = logger.info
+sys.stderr.write = logger.error
 
 class UpdateServer:
 
@@ -85,11 +88,15 @@ class UpdateServer:
 
     def updateserver(self):
         import subprocess
-        from io import StringIO
+        // from io import StringIO
         try:
             logger.debug("Running steam update")
-            process = subprocess.Popen(["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            subprocess.Popen(["/usr/games/steamcmd", " +login anonymous +force_install_dir . "
+                                                               "+app_update 258550  validate"])
+            '''  Will come back to this at some point. Would like to be able to log this out rather than stdout.
+            process = subprocess.Popen(
+            #    ["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],
+            #    stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             while True:
                 output = process.stdout.readline()
                 error = process.stderr.readline()
@@ -101,7 +108,7 @@ class UpdateServer:
                     break
                 if error:
                     logger.error(StringIO(error))
-            rc = process.poll()
+            rc = process.poll() **/ '''
         except Exception as err:
             logger.error("Error while updating steam: %s" % err)
 

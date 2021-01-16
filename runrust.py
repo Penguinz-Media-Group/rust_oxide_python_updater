@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import subprocess
 import json
-from sys import exit
+import sys
 import logging
 
 rustpw = "rustpw.json"
@@ -12,7 +12,8 @@ FORMAT = '%(asctime)-15s  %(function)-8s %(message)s'
 logging.basicConfig(filename="rust.log", level=logging.DEBUG)
 logger = logging.getLogger('rustserverexec')
 
-
+sys.stdout.write = logger.info
+sys.stderr.write = logger.error
 
 # TODO add premium support for getopts
 def getpw():
@@ -23,7 +24,7 @@ def getpw():
             pwf.close()
     except Exception as err:
         logger.error("Unable to read pw, quiting!")
-        exit(1)
+        sys.exit(1)
     return pw
 
 def loadconf():
@@ -52,7 +53,8 @@ def runserver(pw):
             conf['worldsize'], conf['desc'] + pmgdesc, conf['image'], conf['url'] )
 
     try:
-        process = subprocess.Popen(['RustDedicated', opts], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        subprocess.Popen(['RustDedicated', opts])
+        '''process = subprocess.Popen(['RustDedicated', opts], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         while True:
                 output = process.stdout.readline()
                 error = process.stderr.readline()
@@ -64,7 +66,7 @@ def runserver(pw):
                     break
                 if error:
                     logger.error(StringIO(error))
-            rc = process.poll()
+            rc = process.poll() '''
 
     except Exception as err:
         logger.error("Unable to start Rust Server: %s" % err)

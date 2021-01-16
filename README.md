@@ -9,7 +9,7 @@ This is a simple python script for creating, running, and maintaining rust serve
 * requests
 
 # Future
-Plan to add getopts and migrate my batch script for Rust Servers in general to here, alonmg with the SystemD file I use
+Check out our project board: https://github.com/Penguinz-Media-Group/rust_oxide_python_updater/projects/1
 
 # License Conflict?
 This script is licensed as the license file shows in the repo. Chat with me and we can negiotiate a license update for you.

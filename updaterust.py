@@ -91,8 +91,8 @@ class UpdateServer:
         # from io import StringIO
         try:
             logger.debug("Running steam update")
-            subprocess.Popen(["/usr/games/steamcmd", " +login anonymous +force_install_dir . "
-                                                               "+app_update 258550  validate"])
+            subprocess.run(["/usr/games/steamcmd", " +login anonymous +force_install_dir . "
+                                                               "+app_update 258550"])
             '''  Will come back to this at some point. Would like to be able to log this out rather than stdout.
             process = subprocess.Popen(
             #    ["/usr/games/steamcmd", " +login anonymous +force_install_dir . +app_update 258550  validate"],

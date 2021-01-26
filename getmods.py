@@ -24,7 +24,7 @@ def load_conf(pluginconf):
         logger.error("Unable to load config file!")
 
 
-def pull_mod(url, oxidefile,  zipped):
+def pull_mod(url, oxidefile):
     try:
         file = get(url, allow_redirects=True)
     except Exception as err:
@@ -38,21 +38,18 @@ def pull_mod(url, oxidefile,  zipped):
         logger.error("Error writing to file: %s" % err)
 
 
-def unzipfile(zipfile, zipdir,mode='r'):
-    from os import remove
-    from zipfile import ZipFile
-    try:
-        with ZipFile(zipfile, 'r') as zp:
-            zp.extractall(zipdir)
-    except Exception as err:
-        logger.error("Failed to unzip package: %s" % err)
-        return False
-    if mode == "r":
-        try:
-            remove(zipfile)
-        except Exception as err:
-            logger.warning("Failed to cleanup package: %s" % err)
-            return False
-    return True
+def bundle_installer(bundle):
+    for name,url in bundle.items():
+        pull_mod(url, name + ".cs")
+
+
+def bundle_checker(cnf):
+    for name, state in cnf['enabled'].items():
+        if state == "true":
+            bundle_installer(cnf[name])
+
+
 
 pluginconf = "plugins.json"
+cnf = load_conf(pluginconf)
+bundle_checker(cnf)

@@ -48,7 +48,7 @@ def bundle_installer(bundle):
 
 
 def bundle_checker(cnf):
-    for name, state in cnf['enabled'].items():
+    for name, state in cnf['enabled']:
         if state == "true":
             logger.info("Installing bundle %s" % name)
             bundle_installer(cnf[name])

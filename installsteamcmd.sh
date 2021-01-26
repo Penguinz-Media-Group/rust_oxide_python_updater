@@ -6,7 +6,7 @@ useradd -m steam
 add-apt-repository multiverse
 dpkg --add-architecture i386
 apt update
-apt install lib32gcc1 steamcmd
+apt install lib32gcc1 steamcmd -y
 
 cd /usr/local/bin
 ln -s /usr/games/steamcmd

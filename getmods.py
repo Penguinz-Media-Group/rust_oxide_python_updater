@@ -39,13 +39,18 @@ def pull_mod(url, oxidefile):
 
 
 def bundle_installer(bundle):
-    for name,url in bundle.items():
-        pull_mod(url, name + ".cs")
+    for name, url in bundle.items():
+        logger.debug("Installing  mod %s" % name)
+        try:
+            pull_mod(url, name + ".cs")
+        except Exception as err:
+            logger.error("Failed to pull mod file %s due to %s" % (name, err) )
 
 
 def bundle_checker(cnf):
     for name, state in cnf['enabled'].items():
         if state == "true":
+            logger.info("Installing bundle %s" % name)
             bundle_installer(cnf[name])
 
 

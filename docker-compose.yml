@@ -1,1 +1,8 @@
 ---
+version: "2.4"
+services:
+  pmg-rust-server:
+    build: .
+    volumes:
+      - "/opt/rust"
+    restart: always

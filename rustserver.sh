@@ -9,6 +9,8 @@ if ! -f "/etc/systemd/rust.service"; then
   systemctl enable rust.service
 fi
 # TODO add Ansible alternative for Premium
+iptables -I INPUT -p tcp --match multiport --dports 28000-29000 -j ACCEPT
+iptables -I INPUT -p udp--match multiport --dports 28000-29000 -j ACCEPT
 while :
 do
   cd /opt/rust

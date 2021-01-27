@@ -25,6 +25,7 @@ def getpw():
     except Exception as err:
         logger.error("Unable to read pw, quiting!")
         sys.exit(1)
+        pw = "ChangeMe"
     return pw
 
 def loadconf():

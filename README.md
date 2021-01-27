@@ -6,13 +6,15 @@ This is an install and maintain framework for rust servers written in python. It
 * Installs oxide mod plugin bundles (if turned on)
 * Installs a systemd service
 
-# Operatin Systems Supported
+# Operating Systems Supported
 * Debian
 * Ubuntu 
+* Docker
 
 # Packages Needed to be Installed
 * git
 * python3
+* python3-pip
 
 # Libraries Needed To Be Installed
 * requests

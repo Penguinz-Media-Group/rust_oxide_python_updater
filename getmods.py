@@ -37,7 +37,7 @@ class loadmod:
             print("Error retrieving oxide file: %s" % err)
         oxidefile = str(path.abspath("/opt/rust/oxide/plugins/" + oxidefile))
         try:
-            with open(oxidefile, 'wb') as oxide:
+            with open(oxidefile, 'w') as oxide:
                 oxide.write(file.content)
                 oxide.close()
         except Exception as err:

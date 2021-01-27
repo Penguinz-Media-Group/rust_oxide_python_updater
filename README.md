@@ -1,5 +1,14 @@
 # rust_oxide_python_updater
-This is a simple python script for creating, running, and maintaining rust servers using python and a minimal amount of packages outside of core packages for our base package.
+This is an install and maintain framework for rust servers written in python. It automatically:
+* Installs SteamCMD
+* Installs core rust server
+* Installs oxide (if turned on)
+* Installs oxide mod plugin bundles (if turned on)
+* Installs a systemd service
+
+# Operatin Systems Supported
+* Debian
+* Ubuntu 
 
 # Packages Needed to be Installed
 * git
@@ -7,6 +16,7 @@ This is a simple python script for creating, running, and maintaining rust serve
 
 # Libraries Needed To Be Installed
 * requests
+* zipfile
 
 # Future
 Check out our project board: https://github.com/Penguinz-Media-Group/rust_oxide_python_updater/projects/1

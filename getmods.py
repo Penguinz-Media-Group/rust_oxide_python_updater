@@ -31,6 +31,7 @@ class loadmod:
 
 
     def pull_mod(self, url, oxidefile):
+        # TODO convert this to generic pull file
         try:
             file = get(url, allow_redirects=True)
         except Exception as err:
@@ -60,9 +61,27 @@ class loadmod:
                 logger.info("Installing bundle %s" % name)
                 self.bundle_installer(self.cnf[name])
 
+
+    def install_dll(self, url):
+        # TODO Migrate to a single file pull / installer
+        try:
+            file = get(url, allow_redirects=True)
+        except Exception as err:
+            print("Error retrieving dll file: %s" % err)
+        oxidefile = str(path.abspath("/opt/rust/RustDedicated_Data/Managed/" + oxidefile))
+        try:
+            with open(oxidefile, 'w') as oxide:
+                oxide.write(file.content)
+                oxide.close()
+        except Exception as err:
+            logger.error("Error writing to file: %s" % err)
+
+
 if __name__ == "__main__":
     x = loadmod()
     x.load_conf()
+    if "communitybundle" in x.cnf:
+        x.install_dll("http://playrust.io/latest")
     x.bundle_checker()
 
 

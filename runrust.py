@@ -1,85 +1,56 @@
 #!/usr/bin/python3
 import subprocess
 import json
+from helper import RustHelper
 import sys
-import logging
 
-rustpw = "rustpw.json"
-rustconf = "rustconf.json"
+rh = RustHelper()
+logger = rh.logger(functionname="runrust")
 
 
-FORMAT = '%(asctime)-15s  %(function)-8s %(message)s'
-logging.basicConfig(filename="rust.log", level=logging.DEBUG)
-logger = logging.getLogger('rustserverexec')
+class RunRust:
 
-sys.stdout.write = logger.info
-sys.stderr.write = logger.error
+    def __init__(self, arg):
+        self.conf = {}
+        self.rustpw = "rustpw.json"
+        self.rustconf = "rustconf.json"
+        self.conf = rh.loadconf(self.rustconf)
+        self.conf.update(rh.parseopts(arg))
+        self.pw = self.getpw()
 
-# TODO add premium support for getopts
-def getpw():
-    try:
-        with open(rustpw, 'r') as pwf:
-            pw = pwf.readline()
+    def getpw(self):
+        try:
+            pw = rh.loadconf(self.rustpw)
             pw = json.loads(pw)['password']
-            pwf.close()
-    except Exception as err:
-        logger.error("Unable to read pw, quiting!")
-        sys.exit(1)
-        pw = "ChangeMe"
-    return pw
+        except Exception as err:
+            logger.error("Using default password due to error reading password: %s" % err)
+            pw = "ChangeMe"
+        return pw
 
-def loadconf():
-    # TODO add premium remote package pull
-    try:
-        with open(rustconf, 'r') as cnf:
-            conf = cnf.readlines()
-            conf = ''.join(conf)
-            conf = json.loads(conf)
-    except Exception as err:
-        logger.error("Unable to load configuration: %s" % err)
-    return conf
+    def runserver(self, pw=""):
+        if len(pw) < 2:
+            pw = self.pw
+        conf = self.conf  # laziness maybe, but I dont want to rewrite all of this yet when I know I will have to later
+        pmgdesc = "\n A PMG assisted server. https://penguinzmedia.group/rust"
+        logger.info('Starting Rust Server')
+        logger.debug(conf)
+        # TODO add premium conf loading for id, map, save interval, global chat, and removal of PMG desc add
+        opts = '-batchmode -nographics  -rcon.ip "%s" -rcon.port "%s" -rcon.password "%s" -server.ip "%s" ' \
+               '-server.port "%s" -server.maxplayers "%s" -server.hostname "%s" -server.identity "ServerByPMG" ' \
+               '-server.seed "%s" -server.level "Procedural Map"' \
+               '-server.worldsize "%s" -server.saveinterval "3600" -server.globalchat "true" ' \
+               '-server.description "%s" -server.headerimage "%s" -server.url "%s"' % \
+               (conf['ip'], conf['rport'], pw, conf['ip'],  conf['sport'], conf['players'], conf['hostname'],
+                conf['seed'], conf['worldsize'], conf['desc'] + pmgdesc, conf['image'], conf['url'])
+        logger.debug("%s" % opts)
 
-def runserver(pw):
-    # from io import StringIO
-
-    conf = loadconf()
-    pmgdesc = "\n A PMG assisted server. https://penguinzmedia.group/rust"
-    logger.info('Starting Rust Server')
-    logger.debug(conf)
-    # TODO add premium conf loading for id, map, save interval, global chat, and removal of PMG desc add
-    opts = '-batchmode -nographics  -rcon.ip "%s" -rcon.port "%s" -rcon.password "%s" -server.ip "%s" ' \
-           '-server.port "%s" -server.maxplayers "%s" -server.hostname "%s" -server.identity "ServerByPMG" -server.seed "%s" ' \
-           '-server.level "Procedural Map" -server.worldsize "%s" -server.saveinterval "3600" -server.globalchat "true" ' \
-           '-server.description "%s" -server.headerimage "%s" -server.url "%s"' % \
-           (conf['ip'], conf['rport'], pw, conf['ip'],  conf['sport'], conf['players'], conf['hostname'], conf['seed'],
-            conf['worldsize'], conf['desc'] + pmgdesc, conf['image'], conf['url'] )
-    logger.debug("%s" %  opts)
-
-    try:
-        subprocess.run(['/opt/rust/RustDedicated', opts])
-        '''process = subprocess.Popen(['RustDedicated', opts], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        while True:
-                output = process.stdout.readline()
-                error = process.stderr.readline()
-                if output == '' and process.poll() is not None:
-                    break
-                if output:
-                    logger.info(StringIO(output))
-                if error == '' and process.poll() is not None:
-                    break
-                if error:
-                    logger.error(StringIO(error))
-            rc = process.poll() '''
-
-    except Exception as err:
-        logger.error("Unable to start Rust Server: %s" % err)
-        return
-    logger.info("Starting Rust Server with PMG assistance!")
-
-pw = getpw()
-runserver(pw)
+        try:
+            subprocess.run(['/opt/rust/RustDedicated', opts])
+        except Exception as err:
+            logger.error("Unable to start Rust Server: %s" % err)
+            return
+        logger.info("Starting Rust Server with PMG assistance!")
 
 
-
-
-
+x = RunRust(sys.argv)
+x.runserver()

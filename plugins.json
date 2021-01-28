@@ -89,7 +89,8 @@
     "pm": "https://umod.org/plugins/PrivateMessages.cs",
     "lootcleaner": "https://umod.org/plugins/LootBouncer.cs",
     "setloot": "https://umod.org/plugins/SimpleLoot.cs",
-    "betterchat": "https://umod.org/plugins/BetterChat.cs"
+    "betterchat": "https://umod.org/plugins/BetterChat.cs",
+    "skins": "https://umod.org/plugins/Skins.cs",
   },
   "carbearbundle": {
     "attackhelimap": "https://umod.org/plugins/MapMyPatrol.cs",

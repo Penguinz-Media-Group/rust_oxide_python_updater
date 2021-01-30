@@ -8,9 +8,10 @@ if ! -f "/etc/systemd/rust.service"; then
   cp /opt/rust/rust.service /etc/systemd/system/rust.service
   systemctl enable rust.service
 fi
+/opt/rust/installsteamcmd.sh
 # TODO add Ansible alternative for Premium
 iptables -I INPUT -p tcp --match multiport --dports 28000-29000 -j ACCEPT
-iptables -I INPUT -p udp--match multiport --dports 28000-29000 -j ACCEPT
+iptables -I INPUT -p udp --match multiport --dports 28000-29000 -j ACCEPT
 while :
 do
   cd /opt/rust

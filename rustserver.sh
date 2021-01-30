@@ -1,6 +1,6 @@
 #!/bin/bash
 apt install git python3-pip -y
-pip3 install zipfile requests
+pip3 install zipfile38 requests
 if ! -d "/opt/rust" ; then
   git clone https://github.com/Penguinz-Media-Group/rust_oxide_python_updater.git /opt/rust
 fi

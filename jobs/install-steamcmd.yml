@@ -1,0 +1,27 @@
+---
+- name: "Create Steam User"
+  ansible.builtin.user:
+    name: steam
+    shell: /bin/bash
+    append: yes
+- name: Install correct deb repo
+  ansible.builtin.command: "{{ item }}"
+  with_items:
+    - add-apt-repository multiverse
+    - dpkg --add-architecture i386
+    - apt update
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+- name: Install steamcmd
+    ansible.builtin.package:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - lib32gcc1
+      - steamcmd
+- name: Create a symbolic link to steamcmd
+  ansible.builtin.file:
+    src: /usr/games/steamcmd
+    dest: /usr/local/bin/steamcmd
+    owner: root
+    group: root
+    state: link

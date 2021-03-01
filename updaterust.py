@@ -58,13 +58,7 @@ class UpdateServer:
 
 
     def updateserver(self):
-        from subprocess import run
-        try:
-            logger.debug("Running steam update")
-            run(["/usr/games/steamcmd", " +login anonymous +force_install_dir /opt/rust +app_update 258550 "
-                                                   "+quit"])
-        except Exception as err:
-            logger.error("Error while updating steam: %s" % err)
+        pass
 
 
     def runrustupdate(self):

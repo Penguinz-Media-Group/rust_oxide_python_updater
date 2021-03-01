@@ -1,0 +1,11 @@
+---
+- name: "Copy File to system folder"
+  ansible.builtin.copy:
+    src: ../rust.service
+    dest: /etc/systemd/system/rust.service
+    mode: "0544"
+- name: "Start Rust Service"
+  ansible.builtin.systemd:
+    state: started
+    daemon_reload: yes
+    name: restarted

@@ -1,0 +1,20 @@
+---
+- name: Allow related and established connections
+  ansible.builtin.iptables:
+    chain: INPUT
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+  become: yes
+- name: Allow new incoming connections to Rust Server
+  ansible.builtin.iptables:
+    chain: INPUT
+    action: insert
+    protocol: tcp
+    destination_port: "{{ item }}"
+    jump: ACCEPT
+  become: yes
+  with_items:
+    - "{{ server_port }}"
+    - "{{ rcon_port }}"
+    - "{{ app_port }}"3
+

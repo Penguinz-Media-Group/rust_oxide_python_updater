@@ -1,0 +1,3 @@
+---
+- name: Install or update rust game server
+    command: "/usr/games/steamcmd login anonymous +force_install_dir {{ server_dir }} +app_update 258550 +quit"

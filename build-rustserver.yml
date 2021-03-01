@@ -1,0 +1,23 @@
+---
+- name: Install Rust
+  hosts: all
+  remote_users: root
+  vars_files:
+    - vars/oxide.yml
+    - vars/rust.yml
+    - vars/bundles.yml
+  tasks:
+    - name: Install SteamCmd
+      include_tasks: jobs/install-steamcmd.yml
+    - name: Install Firewall Exceptions
+      include_tasks: jobs/install-firewall.yml
+    - name: Install Rust Game
+      include_tasks: jobs/install-rustgame.yml
+    - name: Install Rust SystemD service
+      include_tasks: jobs/install-systemd.yml
+    - name: Install Oxide
+      when: oxide_install
+      include_tasks: jobs/install-oxide.yml
+    - name: Install Oxide Bundles
+      when: oxide_install
+      include_tasks: jobs/install-oxide-bundles.yml

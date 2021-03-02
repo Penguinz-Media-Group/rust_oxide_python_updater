@@ -1,3 +1,23 @@
 ---
 - name: "Check for Latest Oxide"
-  command: "
+  ansible.builtin.script: "{{ playbook_dir }}/python_helpers/getmods.py"
+    args:
+      executable: python3
+- name: Check for updated Oxide file
+  stat:
+    path: "{{ download.local }}"
+  register: stat_result
+  when: download.update
+- name: Unarchive oxide file
+  ansible.builtin.unarchive:
+    src: "{{ download.local }}"
+    dest: "{{ server.directory }}/"
+  when: download.update and stat_result.stat.exists
+- name: Remove oxide file
+  ansible.builtin.file:
+    path: "{{ download.local }}"
+    state: absent
+- name: "Check for Latest RUSTIO"
+  ansible.builtin.script: "{{ playbook_dir }}/python_helpers/check_dll.py"
+    args:
+      executable: python3

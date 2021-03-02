@@ -4,8 +4,16 @@
     src: ../rust.service
     dest: /etc/systemd/system/rust.service
     mode: "0544"
-- name: "Start Rust Service"
-  ansible.builtin.systemd:
-    state: started
-    daemon_reload: yes
-    name: restarted
+- name: Update service
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/system/rust.service
+    regexp: '^ExecStart='
+    line: >
+      ExecStart='{{ server.directory }}/RustDedicated -app.port "{{ app.port }}"
+      -batchmode -nographics  -rcon.ip "{{ rcon.ip }}" -rcon.port "{{ rcon.port }}"
+      -rcon.password "{{ rcon.password }}" -server.ip "{{ server.ip }}" -server.port "{{ server.port }}"
+      -server.maxplayers "{{ server.players }}" -server.hostname "{{ server.hostname }}" -server.identity "ServerByPMG"
+      -server.seed "{{ server.seed }}" -server.level "{{ server.level }}" -server.worldsize "{{ server.size }}"
+      -server.saveinterval "{{ server.save_inteval }}" -server.globalchat "true" -server.url "{{ server.url }}"
+      -server.description "{{ server.description }}" -server.headerimage "{{ server.header_image }}"'
+

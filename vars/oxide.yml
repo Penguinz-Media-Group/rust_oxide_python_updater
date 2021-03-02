@@ -1,1 +1,9 @@
 ---
+enable: true
+download:
+  update: false
+  remote:
+  local: /tmp/oxide-linux.zip
+dll:
+  update: false
+  url:

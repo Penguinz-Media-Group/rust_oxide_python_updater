@@ -1,0 +1,6 @@
+---
+- name: "Start Rust Service"
+  ansible.builtin.systemd:
+    state: restarted
+    daemon_reload: yes
+    name: rust

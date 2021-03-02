@@ -1,1 +1,3 @@
 ---
+- name: "Check for Latest Oxide"
+  command: "

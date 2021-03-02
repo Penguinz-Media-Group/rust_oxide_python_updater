@@ -1,0 +1,12 @@
+---
+admin: true
+community: true
+rp:
+  lite: true
+  moderate: true
+  strict: true
+build: true
+pvp: true
+vip: true
+core: true
+carebear: true

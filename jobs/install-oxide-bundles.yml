@@ -1,1 +1,31 @@
 ---
+- name: Installing Admin Bundle
+  import_playbook: bundles/admin.yml
+  when: admin
+- name: Installing Community Bundle
+  import_playbook: bundles/community.yml
+  when: community
+- name: Installing RP Lite Bundle
+  import_playbook: bundles/rp-lite.yml
+  when: rp.lite
+- name: Installing RP Moderate Bundle
+  import_playbook: bundles/rp-moderate.yml
+  when: rp.moderate
+- name: Installing RP Strict Bundle
+  import_playbook: bundles/rp-strict.yml
+  when: rp.strict
+- name: Installing Build Bundle
+  import_playbook: bundles/build.yml
+  when: build
+- name: Installing PVP Bundle
+  import_playbook: bundles/pvp.yml
+  when: pvp
+- name: Installing VIP bundle
+  import_playbook: bundles/vip.yml
+  when: vip
+- name: Installing Core Bundle
+  import_playbook: bundles/core.yml
+  when: core
+- name: Installing Care Bear Bundle
+  import_playbook: bundles/carebear.yml
+  when: carebear

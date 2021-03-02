@@ -1,14 +1,6 @@
 {
   "enabled": {
-    "adminbundle": "true",
-    "communitybundle": "true",
-    "rpbundlebasicbundle": "true",
-    "rpbundleadvancedbundle": "true",
-    "buildbundle": "true",
-    "pvpbundle": "true",
-    "vipbundle": "true",
-    "corebundle": "true",
-    "carbearbundle": "true"
+
 
   },
   "adminbundle": {

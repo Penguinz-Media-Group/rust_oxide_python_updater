@@ -15,11 +15,11 @@ ENV logfile="stdout"
 ENV modded=1
 COPY upstart.sh /opt
 CMD ["/opt/upstart.sh"]
-COPY plugins.json /opt/rust
+COPY archive/plugins.json /opt/rust
 COPY rustpw.json /opt/rust
 COPY rustconf.json /opt/rust
 COPY LICENSE /opt/rust
-CMD ["/opt/rust/rustserver.sh"]
+CMD ["/opt/rust/install-ansible.sh"]
 
 
 

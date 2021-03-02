@@ -1,2 +1,21 @@
 ---
-rust_directory: "/opt/rust"
+server:
+  port: 28015
+  directory: "/opt/rust"
+  size:  3500
+  level: "Procedural Map"
+  header_image:
+  save_interval: 360
+  global_chat: true
+  url: "https://penguinzmedia.group"
+  description: "A PMG server!"
+  hostname: "PMG Server"
+  players: 100
+  seed: 404
+rcon:
+  port: 28016
+  password: "{{ rconpass }}"
+  ip: 0.0.0.0
+app:
+  port: 28082
+

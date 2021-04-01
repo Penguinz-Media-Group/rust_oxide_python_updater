@@ -4,6 +4,8 @@ download:
   update: false
   remote:
   local: /tmp/oxide-linux.zip
-dll:
+RustIOdll:
   update: false
   url:
+RustEditdll:
+  versionfile: "1.0.32.tar.gz"

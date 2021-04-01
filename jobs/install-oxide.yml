@@ -17,7 +17,16 @@
   ansible.builtin.file:
     path: "{{ download.local }}"
     state: absent
-- name: "Check for Latest RUSTIO"
-  ansible.builtin.script: "{{ playbook_dir }}/python_helpers/check_dll.py"
-    args:
-      executable: python3
+- name: Get RustEdit
+  get_url:
+    url: "https://github.com/k1lly0u/Oxide.Ext.RustEdit/archive/refs/tags/{{ RustEditdll.versionfile }}"
+    dest: "{{ server.directory }}/RustDedicated_Data/Managed"
+- name: Extract RustEdit
+  ansible.builtin.unarchive:
+    src: "{{ server.directory }}/RustDedicated_Data/Managed/{{ RustEditdll.versionfile }}"
+    dest: "{{ server.directory }}/RustDedicated_Data/Managed"
+- name: Get RustIO
+  uri:
+    url: "http://playrust.io/latest/oxide"
+    dest: "{{ server.directory }}/RustDedicated_Data/Managed"
+    follow_redirects: yes

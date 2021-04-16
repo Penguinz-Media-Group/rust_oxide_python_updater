@@ -2,232 +2,232 @@
 baseURL: "https://umod.org/plugins" # Does not apply to dll this version, we plan to add later
 adminBundle:
   - advertMessages:
-    url: "{{ {{ baseURL}} }}/AdvertMessages.cs"
+    url: "{{ baseURL }}/AdvertMessages.cs"
     requires:
   - lootLogs:
-    url: "{{ {{ baseURL}} }}/LootLogs.cs"
+    url: "{{ baseURL }}/LootLogs.cs"
     requires:
   - adminGui:
-    url: "{{ {{ baseURL}} }}/PlayerAdministration.cs"
+    url: "{{ baseURL }}/PlayerAdministration.cs"
     requires:
   - vanish:
-    url: "{{ {{ baseURL}} }}/Vanish.cs"
+    url: "{{ baseURL }}/Vanish.cs"
     requires:
   - noAdminNotice:
-    url: "{{ {{ baseURL}} }}/NoGiveNotices.cs"
+    url: "{{ baseURL }}/NoGiveNotices.cs"
     requires:
   - adminRadar:
-    url: "{{ {{ baseURL}} }}/AdminRadar.cs"
+    url: "{{ baseURL }}/AdminRadar.cs"
     requires:
   - copyPaste:
-    url: "{{ {{ baseURL}} }}/CopyPaste.cs"
+    url: "{{ baseURL }}/CopyPaste.cs"
     requires:
   - bpManager:
-    url: "{{ {{ baseURL}} }}/BlueprintManager.cs"
+    url: "{{ baseURL }}/BlueprintManager.cs"
     requires:
 communityBundle:
   - clanTags:
-    url: "{{ {{ baseURL}} }}/ClanTags.cs"
+    url: "{{ baseURL }}/ClanTags.cs"
     requires:
   - clanBan:
-    url: "{{ {{ baseURL}} }}/ClanBan.cs"
+    url: "{{ baseURL }}/ClanBan.cs"
     requires:
   - clanInfo:
-    url: "{{ {{ baseURL}} }}/ClanInfo.cs"
+    url: "{{ baseURL }}/ClanInfo.cs"
     requires:
 rpLiteBundle:
   - bounty:
-    url: "{{ {{ baseURL}} }}/Bounty.cs"
+    url: "{{ baseURL }}/Bounty.cs"
     requires:
   - pvpIndictator:
-    url: "{{ {{ baseURL}} }}/PVPIndicator.cs"
+    url: "{{ baseURL }}/PVPIndicator.cs"
     requires:
   - zoneDomes:
-    url: "{{ {{ baseURL}} }}/ZoneDomes.cs"
+    url: "{{ baseURL }}/ZoneDomes.cs"
     requires:
       - "ZoneManager.cs"
   - zonePerms:
-    url: "{{ {{ baseURL}} }}/ZonePerms.cs"
+    url: "{{ baseURL }}/ZonePerms.cs"
     requires:
       - "ZoneManager.cs"
   - economics:
-    url: "{{ {{ baseURL}} }}/Economics.cs"
+    url: "{{ baseURL }}/Economics.cs"
     requires:
   - vehicleLicense:
-    url: "{{ {{ baseURL}} }}/VehicleLicence.cs"
+    url: "{{ baseURL }}/VehicleLicence.cs"
     requires:
   - skillLevels:
-    url: "{{ {{ baseURL}} }}/ZLevelsRemastered.cs"
+    url: "{{ baseURL }}/ZLevelsRemastered.cs"
     requires:
   - playerList:
-    url: "{{ {{ baseURL}} }}/PlayerList.cs"
+    url: "{{ baseURL }}/PlayerList.cs"
     requires:
 rpIntermediateBundle:
 rpHardCoreBundle:
   - vendingManager:
-    url: "{{ {{ baseURL}} }}/VendingManager.cs"
+    url: "{{ baseURL }}/VendingManager.cs"
     requires:
   - humanNpc:
-    url: "{{ {{ baseURL}} }}/HumanNPC.cs"
+    url: "{{ baseURL }}/HumanNPC.cs"
     requires:
   - guiShop:
-    url: "{{ {{ baseURL}} }}/GUIShop.cs"
+    url: "{{ baseURL }}/GUIShop.cs"
     requires:
   - waypoints:
-    url: "{{ {{ baseURL}} }}/Waypoints.cs"
+    url: "{{ baseURL }}/Waypoints.cs"
     requires:
   - serverRewards:
-    url: "{{ {{ baseURL}} }}/ServerRewards.cs"
+    url: "{{ baseURL }}/ServerRewards.cs"
     requires:
   - npcAdvanced:
-    url: "{{ {{ baseURL}} }}/Npctp.cs"
+    url: "{{ baseURL }}/Npctp.cs"
     requires:
   - customCraftUI:
-    url: "{{ {{ baseURL}} }}/CraftUI.cs"
+    url: "{{ baseURL }}/CraftUI.cs"
     requires:
   - teleportation:
-    url: "{{ {{ baseURL}} }}/NTeleportation.cs"
+    url: "{{ baseURL }}/NTeleportation.cs"
     requires:
 buildBundle:
   - buildCost:
-    url: "{{ {{ baseURL}} }}/BuildCost.cs"
+    url: "{{ baseURL }}/BuildCost.cs"
     requires:
   - chestStacks:
-    url: "{{ {{ baseURL}} }}/ChestStacks.cs"
+    url: "{{ baseURL }}/ChestStacks.cs"
     requires:
   - cupBoardDecay:
-    url: "{{ {{ baseURL}} }}/CupboardNoDecay.cs"
+    url: "{{ baseURL }}/CupboardNoDecay.cs"
     requires:
   - removerTool:
-    url: "{{ {{ baseURL}} }}/RemoverTool.cs"
+    url: "{{ baseURL }}/RemoverTool.cs"
     requires:
   - itemCostCalc:
-    url: "{{ {{ baseURL}} }}/ItemCostCalculator.cs"
+    url: "{{ baseURL }}/ItemCostCalculator.cs"
     requires:
   - foundationLimit:
-    url: "{{ {{ baseURL}} }}/FoundationLimit.cs"
+    url: "{{ baseURL }}/FoundationLimit.cs"
     requires:
   - instantCraft:
-    url: "{{ {{ baseURL}} }}/InstantCraft.cs"
+    url: "{{ baseURL }}/InstantCraft.cs"
     requires:
   - quickSmelt:
-    url: "{{ {{ baseURL}} }}/QuickSmelt.cs"
+    url: "{{ baseURL }}/QuickSmelt.cs"
     requires:
   - autoUpgradeMaterial:
-    url: "{{ {{ baseURL}} }}/BGrade.cs"
+    url: "{{ baseURL }}/BGrade.cs"
     requires:
   - buildingUpgrader:
-    url: "{{ {{ baseURL}} }}/BuildingGrades.cs"
+    url: "{{ baseURL }}/BuildingGrades.cs"
     requires:
   - craftreCycler:
-    url: "{{ {{ baseURL}} }}/ExtendedRecycler.cs"
+    url: "{{ baseURL }}/ExtendedRecycler.cs"
     requires:
 pvpBundle:
   - killFeed:
-    url: "{{ {{ baseURL}} }}/SimpleKillFeed.cs"
+    url: "{{ baseURL }}/SimpleKillFeed.cs"
     requires:
   - kits:
-    url: "{{ {{ baseURL}} }}/Kits.cs"
+    url: "{{ baseURL }}/Kits.cs"
     requires:
   - hitIcon:
-    url: "{{ {{ baseURL}} }}/HitIcon.cs"
+    url: "{{ baseURL }}/HitIcon.cs"
     requires:
 vipBundle:
   - uGather:
-    url: "{{ {{ baseURL}} }}/UGather.cs"
+    url: "{{ baseURL }}/UGather.cs"
     requires:
   - fuelGauge:
-    url: "{{ {{ baseURL}} }}/FuelGauge.cs"
+    url: "{{ baseURL }}/FuelGauge.cs"
     requires:
   - playTimeTrack:
-    url: "{{ {{ baseURL}} }}/PlaytimeTracker.cs"
+    url: "{{ baseURL }}/PlaytimeTracker.cs"
     requires:
   - backPacks:
-    url: "{{ {{ baseURL}} }}/Backpacks.cs"
+    url: "{{ baseURL }}/Backpacks.cs"
     requires:
 coreBundle:
   - furnanceSplitter:
-    url: "{{ {{ baseURL}} }}/FurnaceSplitter.cs"
+    url: "{{ baseURL }}/FurnaceSplitter.cs"
     dest: "oxide/plugins"
     requires:
   - autolights:
-    url: "{{ {{ baseURL}} }}/LightsOn.cs"
+    url: "{{ baseURL }}/LightsOn.cs"
     requires:
   - personalBeacon:
-    url: "{{ {{ baseURL}} }}/PersonalBeacon.cs"
+    url: "{{ baseURL }}/PersonalBeacon.cs"
     requires:
   - imageApi:
-    url: "{{ {{ baseURL}} }}/ImageLibrary.cs"
+    url: "{{ baseURL }}/ImageLibrary.cs"
     requires:
   - fuelAlarm:
-    url: "{{ {{ baseURL}} }}/FuelAlarm.cs"
+    url: "{{ baseURL }}/FuelAlarm.cs"
     requires:
   - serverLogo:
-    url: "{{ {{ baseURL}} }}/SimpleLogo.cs"
+    url: "{{ baseURL }}/SimpleLogo.cs"
     requires:
   - npcDropGun:
-    url: "{{ {{ baseURL}} }}/NPCDropGun.cs"
+    url: "{{ baseURL }}/NPCDropGun.cs"
     requires:
   - serverInfo:
-    url: "{{ {{ baseURL}} }}/InfoMenu.cs"
+    url: "{{ baseURL }}/InfoMenu.cs"
     requires:
   - gestures:
-    url: "{{ {{ baseURL}} }}/GestureWheel.cs"
+    url: "{{ baseURL }}/GestureWheel.cs"
     requires:
   - gatherManager:
-    url: "{{ {{ baseURL}} }}/gather-manager"
+    url: "{{ baseURL }}/gather-manager"
     requires:
   - welcomer:
-    url: "{{ {{ baseURL}} }}/Welcomer.cs"
+    url: "{{ baseURL }}/Welcomer.cs"
     requires:
   - loadScreenCustom:
-    url: "{{ {{ baseURL}} }}/LoadingMessages.cs"
+    url: "{{ baseURL }}/LoadingMessages.cs"
     requires:
   - pm:
-    url: "{{ {{ baseURL}} }}/PrivateMessages.cs"
+    url: "{{ baseURL }}/PrivateMessages.cs"
     requires:
   - lootCleaner:
-    url: "{{ {{ baseURL}} }}/LootBouncer.cs"
+    url: "{{ baseURL }}/LootBouncer.cs"
     requires:
   - setLoot:
-    url: "{{ {{ baseURL}} }}/SimpleLoot.cs"
+    url: "{{ baseURL }}/SimpleLoot.cs"
     requires:
   - betterChat:
-    url: "{{ {{ baseURL}} }}/BetterChat.cs"
+    url: "{{ baseURL }}/BetterChat.cs"
     requires:
   - skins:
-    url: "{{ {{ baseURL}} }}/Skins.cs"
+    url: "{{ baseURL }}/Skins.cs"
     requires:
 carBearBundle:
   - attackHeliMap:
-    url: "{{ {{ baseURL}} }}/MapMyPatrol.cs"
+    url: "{{ baseURL }}/MapMyPatrol.cs"
     requires:
   - raidLimit:
-    url: "{{ {{ baseURL}} }}/RaidLimit.cs"
+    url: "{{ baseURL }}/RaidLimit.cs"
     requires:
   - antiNoobRaid:
-    url: "{{ {{ baseURL}} }}/AntiNoobRaid.cs"
+    url: "{{ baseURL }}/AntiNoobRaid.cs"
     requires:
   - autoDoorClose:
-    url: "{{ {{ baseURL}} }}/AutoDoors.cs"
+    url: "{{ baseURL }}/AutoDoors.cs"
     requires:
   - skipNight:
-    url: "{{ {{ baseURL}} }}/SkipNightVote.cs"
+    url: "{{ baseURL }}/SkipNightVote.cs"
     requires:
   - noBurn:
-    url: "{{ {{ baseURL}} }}/UnburnableMeat.cs"
+    url: "{{ baseURL }}/UnburnableMeat.cs"
     requires:
   - upgradeWorkBenches:
-    url: "{{ {{ baseURL}} }}/UpgradeWorkbenches.cs"
+    url: "{{ baseURL }}/UpgradeWorkbenches.cs"
     requires:
   - cupboardRadius:
-    url: "{{ {{ baseURL}} }}/VisualCupboard.cs"
+    url: "{{ baseURL }}/VisualCupboard.cs"
 commonDependencies:
   - zoneManager:
-    url: "{{ {{ baseURL}} }}/ZoneManager.cs"
+    url: "{{ baseURL }}/ZoneManager.cs"
     requires:
   - gameMap:
-    url: "{{ {{ baseURL}} }}/LustyMap.cs"
+    url: "{{ baseURL }}/LustyMap.cs"
     requires:
 dllBundle:
   - rustIO:

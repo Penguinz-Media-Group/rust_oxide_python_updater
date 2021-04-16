@@ -6,6 +6,6 @@ download:
   local: /tmp/oxide-linux.zip
 RustIOdll:
   update: false
-  url:
+  url: "http://playrust.io/latest"
 RustEditdll:
-  versionfile: "1.0.32.tar.gz"
+  versionfile: "1.0.33.tar.gz"

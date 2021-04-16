@@ -1,6 +1,6 @@
 ---
 - name: Get VIP Bundle Items
   get_url:
-    url: "{{ items }}"
+    url: "{{ item.value.url }}"
     dest: "{{ server.directory }}/oxide/plugins"
-  with_items:
+  with_dict: "{{ vipBundle }}"

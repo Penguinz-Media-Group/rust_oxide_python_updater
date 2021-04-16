@@ -1,14 +1,6 @@
 ---
 - name: Get Admin Bundle Items
   get_url:
-    url: "{{ items }}"
+    url: "{{ item.value.url }}"
     dest: "{{ server.directory }}/oxide/plugins"
-  with_items:
-    - "https://umod.org/plugins/AdminMap.cs"
-    - "https://umod.org/plugins/LootLogs.cs"
-    - "https://umod.org/plugins/PlayerAdministration.cs"
-    - "https://umod.org/plugins/Vanish.cs"
-    - "https://umod.org/plugins/NoGiveNotices.cs"
-    - "https://umod.org/plugins/AdminRadar.cs"
-    - "https://umod.org/plugins/CopyPaste.cs"
-    - "https://umod.org/plugins/BlueprintManager.cs"
+  with_dict: "{{ adminBundle }}"

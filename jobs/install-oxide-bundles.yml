@@ -1,4 +1,6 @@
 ---
+- name: Installing Core
+  import_playbook: bundles/core.yml
 - name: Installing Admin Bundle
   import_playbook: bundles/admin.yml
   when: admin

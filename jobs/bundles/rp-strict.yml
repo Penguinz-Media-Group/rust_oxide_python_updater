@@ -1,6 +1,6 @@
 ---
-- name: Get RP Heavy Bundle Items
+- name: Get RP HardCore Bundle Items
   get_url:
-    url: "{{ items }}"
+    url: "{{ item.value.url }}"
     dest: "{{ server.directory }}/oxide/plugins"
-  with_items:
+  with_dict: "{{ rpHardCoreBundle }}"

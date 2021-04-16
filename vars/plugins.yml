@@ -1,232 +1,236 @@
 ---
-adminbundle: 
-  - adminmap: 
-    url: "https://umod.org/plugins/AdminMap.cs"
+baseURL: "https://umod.org/plugins" # Does not apply to dll this version, we plan to add later
+adminBundle:
+  - advertMessages:
+    url: "{{ {{ baseURL}} }}/AdvertMessages.cs"
     requires:
-      - "LustyMap.cs"
-  - autobroadcast:
-    url: "https://umod.org/plugins/AutoBroadcast.cs"
+  - lootLogs:
+    url: "{{ {{ baseURL}} }}/LootLogs.cs"
     requires:
-  - lootlogs:
-    url: "https://umod.org/plugins/LootLogs.cs"
-    requires:
-  - admingui:
-    url: "https://umod.org/plugins/PlayerAdministration.cs"
+  - adminGui:
+    url: "{{ {{ baseURL}} }}/PlayerAdministration.cs"
     requires:
   - vanish:
-    url: "https://umod.org/plugins/Vanish.cs"
+    url: "{{ {{ baseURL}} }}/Vanish.cs"
     requires:
-  - noadminnotice:
-    url: "https://umod.org/plugins/NoGiveNotices.cs"
+  - noAdminNotice:
+    url: "{{ {{ baseURL}} }}/NoGiveNotices.cs"
     requires:
-  - adminradar:
-    url: "https://umod.org/plugins/AdminRadar.cs"
+  - adminRadar:
+    url: "{{ {{ baseURL}} }}/AdminRadar.cs"
     requires:
-  - copypaste:
-    url: "https://umod.org/plugins/CopyPaste.cs"
+  - copyPaste:
+    url: "{{ {{ baseURL}} }}/CopyPaste.cs"
     requires:
-  - bpmanager:
-    url: "https://umod.org/plugins/BlueprintManager.cs"
+  - bpManager:
+    url: "{{ {{ baseURL}} }}/BlueprintManager.cs"
     requires:
-communitybundle: 
-  - clantags:
-    url: "https://umod.org/plugins/ClanTags.cs"
+communityBundle:
+  - clanTags:
+    url: "{{ {{ baseURL}} }}/ClanTags.cs"
     requires:
-  - clanban:
-    url: "https://umod.org/plugins/ClanBan.cs"
+  - clanBan:
+    url: "{{ {{ baseURL}} }}/ClanBan.cs"
     requires:
-  - claninfo:
-    url: "https://umod.org/plugins/ClanInfo.cs"
+  - clanInfo:
+    url: "{{ {{ baseURL}} }}/ClanInfo.cs"
     requires:
-rpbundlebasicbundle: 
+rpLiteBundle:
   - bounty:
-    url: "https://umod.org/plugins/Bounty.cs"
+    url: "{{ {{ baseURL}} }}/Bounty.cs"
     requires:
-  - pvpindictator:
-    url: "https://umod.org/plugins/PVPIndicator.cs"
+  - pvpIndictator:
+    url: "{{ {{ baseURL}} }}/PVPIndicator.cs"
     requires:
-  - zonedomes:
-    url: "https://umod.org/plugins/ZoneDomes.cs"
+  - zoneDomes:
+    url: "{{ {{ baseURL}} }}/ZoneDomes.cs"
     requires:
       - "ZoneManager.cs"
-  - zoneperms:
-    url: "https://umod.org/plugins/ZonePerms.cs"
+  - zonePerms:
+    url: "{{ {{ baseURL}} }}/ZonePerms.cs"
     requires:
       - "ZoneManager.cs"
   - economics:
-    url: "https://umod.org/plugins/Economics.cs"
+    url: "{{ {{ baseURL}} }}/Economics.cs"
     requires:
-  - vehiclelicense:
-    url: "https://umod.org/plugins/VehicleLicence.cs"
+  - vehicleLicense:
+    url: "{{ {{ baseURL}} }}/VehicleLicence.cs"
     requires:
-  - skilllevels:
-    url: "https://umod.org/plugins/ZLevelsRemastered.cs"
+  - skillLevels:
+    url: "{{ {{ baseURL}} }}/ZLevelsRemastered.cs"
     requires:
-  - playerlist:
-    url: "https://umod.org/plugins/PlayerList.cs"
+  - playerList:
+    url: "{{ {{ baseURL}} }}/PlayerList.cs"
     requires:
-rpbundleadvancedbundle: 
-  - vendingmanager:
-    url: "https://umod.org/plugins/VendingManager.cs"
+rpIntermediateBundle:
+rpHardCoreBundle:
+  - vendingManager:
+    url: "{{ {{ baseURL}} }}/VendingManager.cs"
     requires:
-  - humannpc:
-    url: "https://umod.org/plugins/HumanNPC.cs"
+  - humanNpc:
+    url: "{{ {{ baseURL}} }}/HumanNPC.cs"
     requires:
-  - guishop:
-    url: "https://umod.org/plugins/GUIShop.cs"
+  - guiShop:
+    url: "{{ {{ baseURL}} }}/GUIShop.cs"
     requires:
   - waypoints:
-    url: "https://umod.org/plugins/Waypoints.cs"
+    url: "{{ {{ baseURL}} }}/Waypoints.cs"
     requires:
-  - serverrewards:
-    url: "https://umod.org/plugins/ServerRewards.cs"
+  - serverRewards:
+    url: "{{ {{ baseURL}} }}/ServerRewards.cs"
     requires:
-  - npcadvanced:
-    url: "https://umod.org/plugins/Npctp.cs"
+  - npcAdvanced:
+    url: "{{ {{ baseURL}} }}/Npctp.cs"
     requires:
-  - customcrafui:
-    url: "https://umod.org/plugins/CraftUI.cs"
+  - customCraftUI:
+    url: "{{ {{ baseURL}} }}/CraftUI.cs"
     requires:
-  - Teleportation:
-    url: "https://umod.org/plugins/NTeleportation.cs"
+  - teleportation:
+    url: "{{ {{ baseURL}} }}/NTeleportation.cs"
     requires:
-buildbundle: 
-  - buildcost:
-    url: "https://umod.org/plugins/BuildCost.cs"
+buildBundle:
+  - buildCost:
+    url: "{{ {{ baseURL}} }}/BuildCost.cs"
     requires:
-  - cheststacks:
-    url: "https://umod.org/plugins/ChestStacks.cs"
+  - chestStacks:
+    url: "{{ {{ baseURL}} }}/ChestStacks.cs"
     requires:
-  - cupboarddecay:
-    url: "https://umod.org/plugins/CupboardNoDecay.cs"
+  - cupBoardDecay:
+    url: "{{ {{ baseURL}} }}/CupboardNoDecay.cs"
     requires:
-  - removertool:
-    url: "https://umod.org/plugins/RemoverTool.cs"
+  - removerTool:
+    url: "{{ {{ baseURL}} }}/RemoverTool.cs"
     requires:
-  - itemcostcalc:
-    url: "https://umod.org/plugins/ItemCostCalculator.cs"
+  - itemCostCalc:
+    url: "{{ {{ baseURL}} }}/ItemCostCalculator.cs"
     requires:
-  - foundationlimit:
-    url: "https://umod.org/plugins/FoundationLimit.cs"
+  - foundationLimit:
+    url: "{{ {{ baseURL}} }}/FoundationLimit.cs"
     requires:
-  - instantcraft:
-    url: "https://umod.org/plugins/InstantCraft.cs"
+  - instantCraft:
+    url: "{{ {{ baseURL}} }}/InstantCraft.cs"
     requires:
-  - quicksmelt:
-    url: "https://umod.org/plugins/QuickSmelt.cs"
+  - quickSmelt:
+    url: "{{ {{ baseURL}} }}/QuickSmelt.cs"
     requires:
-  - autoupgradematerial:
-    url: "https://umod.org/plugins/BGrade.cs"
+  - autoUpgradeMaterial:
+    url: "{{ {{ baseURL}} }}/BGrade.cs"
     requires:
-  - buildingupgrader:
-    url: "https://umod.org/plugins/BuildingGrades.cs"
+  - buildingUpgrader:
+    url: "{{ {{ baseURL}} }}/BuildingGrades.cs"
     requires:
-  - craftrecycler:
-    url: "https://umod.org/plugins/ExtendedRecycler.cs"
+  - craftreCycler:
+    url: "{{ {{ baseURL}} }}/ExtendedRecycler.cs"
     requires:
-pvpbundle: 
-  - killfeed:
-    url: "https://umod.org/plugins/SimpleKillFeed.cs"
+pvpBundle:
+  - killFeed:
+    url: "{{ {{ baseURL}} }}/SimpleKillFeed.cs"
     requires:
   - kits:
-    url: "https://umod.org/plugins/Kits.cs"
+    url: "{{ {{ baseURL}} }}/Kits.cs"
     requires:
-  - hiticon:
-    url: "https://umod.org/plugins/HitIcon.cs"
+  - hitIcon:
+    url: "{{ {{ baseURL}} }}/HitIcon.cs"
     requires:
-vipbundle: 
-  - ugather:
-    url: "https://umod.org/plugins/UGather.cs"
+vipBundle:
+  - uGather:
+    url: "{{ {{ baseURL}} }}/UGather.cs"
     requires:
-  - fuelgauge:
-    url: "https://umod.org/plugins/FuelGauge.cs"
+  - fuelGauge:
+    url: "{{ {{ baseURL}} }}/FuelGauge.cs"
     requires:
-  - playtimetrack:
-    url: "https://umod.org/plugins/PlaytimeTracker.cs"
+  - playTimeTrack:
+    url: "{{ {{ baseURL}} }}/PlaytimeTracker.cs"
     requires:
-  - backpacks:
-    url: "https://umod.org/plugins/Backpacks.cs"
+  - backPacks:
+    url: "{{ {{ baseURL}} }}/Backpacks.cs"
     requires:
-corebundle: 
-  - furnancesplitter:
-    url: "https://umod.org/plugins/FurnaceSplitter.cs"
+coreBundle:
+  - furnanceSplitter:
+    url: "{{ {{ baseURL}} }}/FurnaceSplitter.cs"
+    dest: "oxide/plugins"
     requires:
   - autolights:
-    url: "https://umod.org/plugins/LightsOn.cs"
+    url: "{{ {{ baseURL}} }}/LightsOn.cs"
     requires:
-  - personalbeacon:
-    url: "https://umod.org/plugins/PersonalBeacon.cs"
+  - personalBeacon:
+    url: "{{ {{ baseURL}} }}/PersonalBeacon.cs"
     requires:
-  - imageapi:
-    url: "https://umod.org/plugins/ImageLibrary.cs"
+  - imageApi:
+    url: "{{ {{ baseURL}} }}/ImageLibrary.cs"
     requires:
-  - fuelalarm:
-    url: "https://umod.org/plugins/FuelAlarm.cs"
+  - fuelAlarm:
+    url: "{{ {{ baseURL}} }}/FuelAlarm.cs"
     requires:
-  - serverlogo:
-    url: "https://umod.org/plugins/SimpleLogo.cs"
+  - serverLogo:
+    url: "{{ {{ baseURL}} }}/SimpleLogo.cs"
     requires:
-  - npcdropgun:
-    url: "https://umod.org/plugins/NPCDropGun.cs"
+  - npcDropGun:
+    url: "{{ {{ baseURL}} }}/NPCDropGun.cs"
     requires:
-  - serverinfo:
-    url: "https://umod.org/plugins/InfoMenu.cs"
+  - serverInfo:
+    url: "{{ {{ baseURL}} }}/InfoMenu.cs"
     requires:
   - gestures:
-    url: "https://umod.org/plugins/GestureWheel.cs"
+    url: "{{ {{ baseURL}} }}/GestureWheel.cs"
     requires:
-  - gathermanager:
-    url: "https://umod.org/plugins/gather-manager"
+  - gatherManager:
+    url: "{{ {{ baseURL}} }}/gather-manager"
     requires:
   - welcomer:
-    url: "https://umod.org/plugins/Welcomer.cs"
+    url: "{{ {{ baseURL}} }}/Welcomer.cs"
     requires:
-  - loadscreencustom:
-    url: "https://umod.org/plugins/LoadingMessages.cs"
+  - loadScreenCustom:
+    url: "{{ {{ baseURL}} }}/LoadingMessages.cs"
     requires:
   - pm:
-    url: "https://umod.org/plugins/PrivateMessages.cs"
+    url: "{{ {{ baseURL}} }}/PrivateMessages.cs"
     requires:
-  - lootcleaner:
-    url: "https://umod.org/plugins/LootBouncer.cs"
+  - lootCleaner:
+    url: "{{ {{ baseURL}} }}/LootBouncer.cs"
     requires:
-  - setloot:
-    url: "https://umod.org/plugins/SimpleLoot.cs"
+  - setLoot:
+    url: "{{ {{ baseURL}} }}/SimpleLoot.cs"
     requires:
-  - betterchat:
-    url: "https://umod.org/plugins/BetterChat.cs"
+  - betterChat:
+    url: "{{ {{ baseURL}} }}/BetterChat.cs"
     requires:
   - skins:
-    url: "https://umod.org/plugins/Skins.cs"
+    url: "{{ {{ baseURL}} }}/Skins.cs"
     requires:
-carbearbundle: 
-  - attackhelimap:
-    url: "https://umod.org/plugins/MapMyPatrol.cs"
+carBearBundle:
+  - attackHeliMap:
+    url: "{{ {{ baseURL}} }}/MapMyPatrol.cs"
     requires:
-  - raidlimit:
-    url: "https://umod.org/plugins/RaidLimit.cs"
+  - raidLimit:
+    url: "{{ {{ baseURL}} }}/RaidLimit.cs"
     requires:
-  - antinoobraid:
-    url: "https://umod.org/plugins/AntiNoobRaid.cs"
+  - antiNoobRaid:
+    url: "{{ {{ baseURL}} }}/AntiNoobRaid.cs"
     requires:
-  - autodoorclose:
-    url: "https://umod.org/plugins/AutoDoors.cs"
+  - autoDoorClose:
+    url: "{{ {{ baseURL}} }}/AutoDoors.cs"
     requires:
-  - skipnight:
-    url: "https://umod.org/plugins/SkipNightVote.cs"
+  - skipNight:
+    url: "{{ {{ baseURL}} }}/SkipNightVote.cs"
     requires:
-  - noburn:
-    url: "https://umod.org/plugins/UnburnableMeat.cs"
+  - noBurn:
+    url: "{{ {{ baseURL}} }}/UnburnableMeat.cs"
     requires:
-  - upgradeworkbenches:
-    url: "https://umod.org/plugins/UpgradeWorkbenches.cs"
+  - upgradeWorkBenches:
+    url: "{{ {{ baseURL}} }}/UpgradeWorkbenches.cs"
     requires:
-  - cupboardradius:
-    url: "https://umod.org/plugins/VisualCupboard.cs"
-commondependencies:
-  - zonemanager:
-    url: "https://umod.org/plugins/ZoneManager.cs"
+  - cupboardRadius:
+    url: "{{ {{ baseURL}} }}/VisualCupboard.cs"
+commonDependencies:
+  - zoneManager:
+    url: "{{ {{ baseURL}} }}/ZoneManager.cs"
     requires:
-  - gamemap:
-    url: "https://umod.org/plugins/LustyMap.cs"
+  - gameMap:
+    url: "{{ {{ baseURL}} }}/LustyMap.cs"
     requires:
+dllBundle:
+  - rustIO:
+      url: "http://playrust.io/latest"
+  - rustEdit:
+      url: "https://github.com/k1lly0u/Oxide.Ext.RustEdit/archive/refs/tags/1.0.33.zip"

@@ -14,6 +14,7 @@ ENV server_img="https://cdn.cloudflare.steamstatic.com/steam/apps/252490/header.
 ENV server_url="https://penguinzmedia.group/rust"
 ENV logfile="stdout"
 ENV modded=1
+COPY . /opt/rust/
 COPY upstart.sh /opt/
 ENTRYPOINT ["/opt/upstart.sh"]
 

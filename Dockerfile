@@ -1,6 +1,7 @@
 FROM ubuntu
 MAINTAINER Penguinz Media Group LLC
 RUN apt-get update && apt-get install -y python3 python3-pip git && apt-get clean
+RUN pip3 install ansible
 ENV host_ip=0.0.0.0
 ENV server_port=28015
 ENV rcon_port=28016
@@ -13,13 +14,10 @@ ENV server_img="https://cdn.cloudflare.steamstatic.com/steam/apps/252490/header.
 ENV server_url="https://penguinzmedia.group/rust"
 ENV logfile="stdout"
 ENV modded=1
-COPY upstart.sh /opt
-CMD ["/opt/upstart.sh"]
-COPY vars/plugins.yml /opt/rust
-COPY rustpw.json /opt/rust
-COPY rustconf.json /opt/rust
-COPY LICENSE /opt/rust
-CMD ["/opt/rust/install-ansible.sh"]
+COPY upstart.sh /opt/
+ENTRYPOINT ["/opt/upstart.sh"]
+
+
 
 
 

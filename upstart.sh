@@ -1,6 +1,7 @@
 #!/bin/bash
-pip3 install zipfile requests
-if ! -d "/opt/rust" ; then
-  git clone https://github.com/Penguinz-Media-Group/rust_oxide_python_updater.git /opt/rust
-fi
+python3 --version
+pip3 install zipfile38 requests
+git clone --branch development https://github.com/Penguinz-Media-Group/rust_oxide_python_updater.git /opt/rust
+ansible-playbook -i localhost  /opt/rust/buildrustserver.yml
+
 
